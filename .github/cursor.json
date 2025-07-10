@@ -1,0 +1,22 @@
+{
+  "$schema": "https://app.cursor.sh/schemas/1.0/cursor.schema.json",
+  "languages": ["typescript", "javascript"],
+  "tools": [
+    {
+      "name": "node",
+      "version": "18.17.1"
+    },
+    {
+      "name": "npm",
+      "version": "9"
+    },
+    {
+      "name": "expo",
+      "version": "latest"
+    },
+    {
+      "name": "android-sdk",
+      "version": "latest"
+    }
+  ]
+}
