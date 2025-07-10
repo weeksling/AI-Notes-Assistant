@@ -10,6 +10,30 @@
     {
       "name": "expo",
       "version": "latest"
+    },
+    {
+      "name": "android-sdk",
+      "version": "latest"
     }
-  ]
+  ],
+  "background_agent": {
+    "dockerfile": "Dockerfile",
+    "pull_request_template": ".github/PULL_REQUEST_TEMPLATE.md",
+    "build_commands": [
+      "cd VoiceJournal && npm install",
+      "cd VoiceJournal && npm run typecheck",
+      "cd VoiceJournal && npx expo prebuild --platform android",
+      "cd VoiceJournal/android && ./gradlew assembleDebug"
+    ],
+    "test_commands": [
+      "cd VoiceJournal && npm run typecheck",
+      "cd VoiceJournal && npx expo start --web --non-interactive &",
+      "sleep 10 && curl -f http://localhost:8081 || exit 1"
+    ],
+    "android_testing": {
+      "emulator_enabled": true,
+      "basic_app_tests": true,
+      "build_verification": true
+    }
+  }
 }
