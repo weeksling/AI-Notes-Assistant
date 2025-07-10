@@ -127,6 +127,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         <Text style={styles.subtitle}>
           {notes.length} {notes.length === 1 ? 'note' : 'notes'}
         </Text>
+        <TouchableOpacity
+          style={styles.debugButton}
+          onPress={() => navigation.navigate('ErrorReport')}
+        >
+          <Text style={styles.debugButtonText}>🔧 Debug</Text>
+        </TouchableOpacity>
       </View>
 
       {notes.length > 0 && (
@@ -265,5 +271,19 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 18,
     color: '#7f8c8d',
+  },
+  debugButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    backgroundColor: '#95a5a6',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+  },
+  debugButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '600',
   },
 });
