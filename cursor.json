@@ -27,8 +27,7 @@
     ],
     "test_commands": [
       "cd VoiceJournal && npm run typecheck",
-      "cd VoiceJournal && npx expo start --web --non-interactive &",
-      "sleep 10 && curl -f http://localhost:8081 || exit 1"
+      "./test-android-app.sh"
     ],
     "android_testing": {
       "emulator_enabled": true,
