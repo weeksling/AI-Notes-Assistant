@@ -1,0 +1,44 @@
+[
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T11:50:52.777Z",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "args": 0
+  },
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T11:50:52.789Z",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "args": 0
+  },
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T11:50:52.789Z",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "args": 0
+  },
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T11:50:53.126Z",
+    "level": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 ()",
+    "args": 0
+  },
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T11:50:56.766Z",
+    "level": "warning",
+    "text": "[Appetize] Session disconnected",
+    "args": 2
+  },
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T11:51:57.149Z",
+    "level": "warning",
+    "text": "Disconnected client due to inactivity",
+    "args": 1
+  }
+]

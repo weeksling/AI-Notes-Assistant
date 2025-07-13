@@ -42,19 +42,103 @@ function generateAppetizeUrl(options = {}) {
 }
 
 // Wait for Appetize.io device to be ready
-async function waitForDeviceReady(page, timeout = 30000) {
+async function waitForDeviceReady(page, timeout = 60000) {
   console.log('⏳ Waiting for Appetize.io device to be ready...');
   
-  // Wait for the device frame to appear
-  await page.waitForSelector('iframe[title="Appetize"]', { timeout });
+  // First, try to start the session if needed
+  await startAppetizeSession(page);
+  
+  // Wait for the device frame to appear (try multiple selectors)
+  const deviceSelectors = [
+    'iframe[title="Appetize"]',
+    'iframe[src*="appetize"]',
+    'iframe[id*="appetize"]',
+    '.device-frame iframe',
+    '.simulator-frame iframe',
+    '[data-testid="device-frame"] iframe'
+  ];
+  
+  let deviceFrame = null;
+  for (const selector of deviceSelectors) {
+    try {
+      deviceFrame = page.locator(selector).first();
+      await deviceFrame.waitFor({ state: 'visible', timeout: 10000 });
+      console.log(`✅ Found device frame: ${selector}`);
+      break;
+    } catch (error) {
+      console.log(`⏳ Selector ${selector} not found, trying next...`);
+    }
+  }
+  
+  if (!deviceFrame) {
+    throw new Error('No device frame found with any known selector');
+  }
   
   // Wait for the device to boot up
   await page.waitForFunction(() => {
-    const iframe = document.querySelector('iframe[title="Appetize"]');
-    return iframe && iframe.contentWindow;
+    const iframes = document.querySelectorAll('iframe');
+    return Array.from(iframes).some(iframe => iframe.contentWindow);
   }, { timeout });
   
   console.log('✅ Device is ready');
+}
+
+// Try to start Appetize.io session
+async function startAppetizeSession(page) {
+  console.log('🚀 Attempting to start Appetize.io session...');
+  
+  // Look for start buttons with multiple selectors
+  const startSelectors = [
+    'button:has-text("Tap to Start")',
+    'button:has-text("Start Session")',
+    'button:has-text("Start")',
+    'button[data-testid="start-session"]',
+    '.start-button',
+    '.play-button',
+    'button[aria-label*="start"]',
+    'button[aria-label*="play"]'
+  ];
+  
+  for (const selector of startSelectors) {
+    try {
+      const button = page.locator(selector);
+      if (await button.isVisible({ timeout: 2000 })) {
+        console.log(`🎯 Found start button: ${selector}`);
+        await button.click();
+        await page.waitForTimeout(5000); // Wait longer for session to start
+        return true;
+      }
+    } catch (error) {
+      // Continue to next selector
+    }
+  }
+  
+  // Try clicking on device area or preview image
+  try {
+    const deviceClickables = [
+      '.device-frame',
+      '.simulator-frame', 
+      '[data-testid="device-frame"]',
+      '.device-preview',
+      '.app-preview',
+      'img[alt*="device"]'
+    ];
+    
+    for (const selector of deviceClickables) {
+      const element = page.locator(selector);
+      if (await element.isVisible({ timeout: 2000 })) {
+        console.log(`🎯 Clicking on device area: ${selector}`);
+        await element.click();
+        await page.waitForTimeout(5000);
+        return true;
+      }
+    }
+  } catch (error) {
+    console.log(`⚠️ Could not find clickable device area: ${error.message}`);
+  }
+  
+  console.log('⚠️ Could not automatically start session');
+  return false;
 }
 
 // Wait for app to load completely
@@ -220,6 +304,7 @@ module.exports = {
   loadAppInfo,
   generateAppetizeUrl,
   waitForDeviceReady,
+  startAppetizeSession,
   waitForAppLoad,
   captureScreenshot,
   tapDevice,
