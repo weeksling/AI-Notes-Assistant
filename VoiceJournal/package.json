@@ -7,7 +7,12 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:android": "npx expo prebuild --platform android && cd android && ./gradlew assembleDebug",
+    "build:android:release": "npx expo prebuild --platform android && cd android && ./gradlew assembleRelease",
+    "test:web": "timeout 30 expo start --web --non-interactive",
+    "test:build": "npm run typecheck && npm run build:android",
+    "audit:security": "npm audit --audit-level=moderate"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.23.1",
