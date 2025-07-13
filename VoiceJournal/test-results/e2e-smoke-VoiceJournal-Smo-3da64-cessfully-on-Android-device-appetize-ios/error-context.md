@@ -9,14 +9,15 @@
 - text: CONFIGURATION
 - img
 - text: Device
-- button "iPhone 8"
+- button "Pixel 6"
 - text: OS
-- button "iOS 15.5"
+- button "Android 12.0"
 - text: Scale
 - button "75%"
-- text: Show Device Controls On Off Show Developer Tools Show Hide
+- text: Show Device Controls On Off Show Developer Tools Show Hide AppRecorder On Off Network Logs On Off Debug Logs On Off ADB Tunnel On Off
+- img
+- text: Voice Journal v1.0.0
 - img "device border"
-- button "Home button" [disabled]
 - button "Tap to Start"
 - button "Home" [disabled]:
   - img
@@ -34,18 +35,14 @@
   - img
 - button "Font Scale":
   - img
-- button "Shake" [disabled]:
-  - img
 - button "Upload File" [disabled]:
-  - img
-- button "Toggle Software Keyboard" [disabled]:
   - img
 - button "Fingerprint ID" [disabled]:
   - img
 - img
-- button "AppRecorder"
-- tabpanel "AppRecorder":
-  - text: Enable AppRecorder to record and playback actions on any device
-  - button "Enable AppRecorder"
-- alert: Play App
+- text: DEVELOPER TOOLS
+- img
+- button "ADB Tunnel"
+- tabpanel "ADB Tunnel": Shell command will appear here once ADB tunnel is ready
+- alert: Play Voice Journal
 ```

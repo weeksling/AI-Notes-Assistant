@@ -1,0 +1,59 @@
+{
+  "timestamp": "2025-07-13T15:02:18.197Z",
+  "appInfo": {
+    "publicKey": "cdhbrtjdxonikqvbfonijtwpkq",
+    "privateKey": "private_lkzmmqrlmjxpxzqzodtm2omhgq",
+    "platform": "android",
+    "created": "2025-07-13T14:56:29.349Z",
+    "updated": "2025-07-13T14:56:29.349Z",
+    "publicURL": "https://appetize.io/app/cdhbrtjdxonikqvbfonijtwpkq",
+    "appURL": "https://appetize.io/app/cdhbrtjdxonikqvbfonijtwpkq",
+    "manageURL": "https://appetize.io/manage/cdhbrtjdxonikqvbfonijtwpkq",
+    "appUrl": "https://appetize.io/app/cdhbrtjdxonikqvbfonijtwpkq",
+    "debugUrl": "https://appetize.io/app/cdhbrtjdxonikqvbfonijtwpkq?enableAdb=true&proxy=intercept",
+    "uploadTime": "2025-07-13T14:56:29.417Z",
+    "apkPath": "releases/VoiceJournal-v1.2-ErrorHandling-UPDATED.apk"
+  },
+  "initialPageInfo": {
+    "title": "Play Voice Journal",
+    "url": "https://appetize.io/app/cdhbrtjdxonikqvbfonijtwpkq?device=pixel7&osVersion=13.0&toolbar=true",
+    "readyState": "complete",
+    "body": 76284,
+    "elements": {
+      "iframes": 0,
+      "buttons": 32,
+      "forms": 0,
+      "inputs": 10
+    },
+    "console_errors": [],
+    "network_errors": []
+  },
+  "finalPageInfo": {
+    "title": "Play Voice Journal",
+    "url": "https://appetize.io/app/cdhbrtjdxonikqvbfonijtwpkq?device=pixel7&osVersion=13.0&toolbar=true",
+    "readyState": "complete",
+    "body": 78318,
+    "elements": {
+      "iframes": 0,
+      "buttons": 33,
+      "forms": 0,
+      "inputs": 10
+    },
+    "console_errors": [],
+    "network_errors": []
+  },
+  "appetizeElements": {
+    "relevant-buttons": {
+      "count": 1,
+      "visible": true,
+      "text": [
+        "Tap to Start"
+      ]
+    }
+  },
+  "sessionStarted": true,
+  "networkLogsCount": 173,
+  "consoleLogsCount": 2,
+  "screenshotsCount": 24,
+  "monitoringDuration": 120497
+}
