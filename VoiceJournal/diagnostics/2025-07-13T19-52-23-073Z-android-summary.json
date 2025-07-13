@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-07-13T19-52-23-073Z",
+  "appKey": "cdhbrtjdxonikqvbfonijtwpkq",
+  "platform": "android",
+  "totalLogs": 17,
+  "startupLogs": 0,
+  "diagnosticDuration": 180000,
+  "keyFindings": [
+    {
+      "severity": "high",
+      "category": "app_errors",
+      "message": "App startup errors detected",
+      "count": 16,
+      "examples": [
+        {
+          "timestamp": "2025-07-13T19:52:23.608Z",
+          "type": "device_console",
+          "level": "error",
+          "text": "Failed to load resource: net::ERR_CERT_VERIFIER_CHANGED",
+          "location": {
+            "url": "https://appetize.io/_next/static/chunks/2866-83faec033a59b155.js",
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "timestamp": "2025-07-13T19:52:23.608Z",
+          "type": "device_console",
+          "level": "error",
+          "text": "Failed to load resource: net::ERR_FAILED",
+          "location": {
+            "url": "https://appetize.io/_next/static/chunks/7065-9149d20ef403aa42.js",
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        },
+        {
+          "timestamp": "2025-07-13T19:52:23.608Z",
+          "type": "device_console",
+          "level": "error",
+          "text": "Failed to load resource: net::ERR_FAILED",
+          "location": {
+            "url": "https://appetize.io/_next/static/chunks/2935-bdf25d11cff157b0.js",
+            "lineNumber": 0,
+            "columnNumber": 0
+          }
+        }
+      ]
+    }
+  ]
+}

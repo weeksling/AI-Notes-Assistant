@@ -1,0 +1,184 @@
+[
+  {
+    "timestamp": "2025-07-13T19:52:23.608Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_CERT_VERIFIER_CHANGED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/2866-83faec033a59b155.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.608Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/7065-9149d20ef403aa42.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.608Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/2935-bdf25d11cff157b0.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.608Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/8706-acce11161644711d.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.608Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/7329-cbf28f3098f35274.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.608Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/4293-2b950568d7cf12c5.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/1745-a1f75d8976cda7fd.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/832-45d613dd1f6f4801.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/6554-00da877b64a91092.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/1484-a93a646308772979.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/9412-9e95821b3e450cc2.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/7366-777631b0b4c9a5e5.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/chunks/pages/app/%5B...id%5D-844f40f391bdbbca.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/gouQ9hQa7p5brboFIVcH5/_buildManifest.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:23.609Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: net::ERR_FAILED",
+    "location": {
+      "url": "https://appetize.io/_next/static/gouQ9hQa7p5brboFIVcH5/_ssgManifest.js",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:24.631Z",
+    "type": "device_console",
+    "level": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 ()",
+    "location": {
+      "url": "https://appetize.io/favicon.png",
+      "lineNumber": 0,
+      "columnNumber": 0
+    }
+  },
+  {
+    "timestamp": "2025-07-13T19:52:54.609Z",
+    "type": "diagnostic_error",
+    "error": "page.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Tap to Start\")')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"relative inline-flex justify-center items-center rounded-full overflow-hidden\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "stack": "page.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Tap to Start\")')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"relative inline-flex justify-center items-center rounded-full overflow-hidden\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at runAndroidDiagnostics (/workspace/VoiceJournal/scripts/appetize-android-logs.js:284:16)"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "timestamp": "2025-07-13T19:51:49.653Z",
+    "type": "diagnostic_error",
+    "error": "page.evaluateOnNewDocument is not a function",
+    "stack": "TypeError: page.evaluateOnNewDocument is not a function\n    at captureAndroidLogs (/workspace/VoiceJournal/scripts/appetize-android-logs.js:98:14)\n    at runAndroidDiagnostics (/workspace/VoiceJournal/scripts/appetize-android-logs.js:275:21)"
+  }
+]
