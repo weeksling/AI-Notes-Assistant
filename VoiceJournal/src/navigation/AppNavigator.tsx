@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../screens/HomeScreen';
 import { RecordScreen } from '../screens/RecordScreen';
 import { NoteEditorScreen } from '../screens/NoteEditorScreen';
+import { ErrorReportScreen } from '../screens/ErrorReportScreen';
 import { NavigationParamList } from '../types';
 
 const Stack = createStackNavigator<NavigationParamList>();
@@ -48,6 +49,14 @@ export const AppNavigator: React.FC = () => {
           component={NoteEditorScreen}
           options={{
             title: 'Edit Note',
+            headerShown: false, // We'll handle the header in the component
+          }}
+        />
+        <Stack.Screen
+          name="ErrorReport"
+          component={ErrorReportScreen}
+          options={{
+            title: 'Error Reports',
             headerShown: false, // We'll handle the header in the component
           }}
         />

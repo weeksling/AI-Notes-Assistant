@@ -60,4 +60,5 @@ export type NavigationParamList = {
   NoteEditor: { noteId?: string };
   NoteList: undefined;
   NoteDetail: { noteId: string };
+  ErrorReport: undefined;
 };
