@@ -1,0 +1,16 @@
+[
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T15:00:12.321Z",
+    "level": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 ()",
+    "args": 0
+  },
+  {
+    "type": "console",
+    "timestamp": "2025-07-13T15:02:16.857Z",
+    "level": "warning",
+    "text": "[Appetize] Session disconnected",
+    "args": 2
+  }
+]

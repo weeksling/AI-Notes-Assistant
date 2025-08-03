@@ -12,7 +12,23 @@
     "build:android:release": "npx expo prebuild --platform android && cd android && ./gradlew assembleRelease",
     "test:web": "timeout 30 expo start --web --non-interactive",
     "test:build": "npm run typecheck && npm run build:android",
-    "audit:security": "npm audit --audit-level=moderate"
+    "audit:security": "npm audit --audit-level=moderate",
+    "test": "node tests/utils/test-runner.js all",
+    "test:smoke": "node tests/utils/test-runner.js smoke",
+    "test:functional": "node tests/utils/test-runner.js functional",
+    "test:performance": "node tests/utils/test-runner.js performance",
+    "test:quick": "node tests/utils/test-runner.js quick",
+    "test:headed": "node tests/utils/test-runner.js all --headed",
+    "test:debug": "node tests/utils/test-runner.js smoke --debug --headed",
+    "test:diagnose": "node scripts/appetize-diagnostics.js",
+    "test:android-logs": "node scripts/appetize-android-logs.js",
+    "test:manual": "node scripts/manual-appetize-test.js",
+    "analyze:apk": "node scripts/analyze-apk.js",
+    "test:fix-platform": "node scripts/fix-appetize-platform.js",
+    "upload:appetize": "node scripts/upload-to-appetize.js",
+    "playwright:install": "npx playwright install",
+    "playwright:test": "npx playwright test",
+    "playwright:report": "npx playwright show-report"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.23.1",
@@ -34,7 +50,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.13",
     "@types/react": "~18.2.45",
+    "dotenv": "^17.2.0",
     "playwright": "^1.54.1",
     "typescript": "~5.3.3"
   },

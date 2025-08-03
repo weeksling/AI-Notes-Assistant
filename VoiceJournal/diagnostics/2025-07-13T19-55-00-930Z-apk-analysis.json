@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-07-13T19-55-00-930Z",
+  "apkPath": "VoiceJournal-v1.2-ErrorHandling-UPDATED.apk",
+  "basicInfo": {
+    "size": 76379692,
+    "isValidZip": true,
+    "filename": "VoiceJournal-v1.2-ErrorHandling-UPDATED.apk"
+  },
+  "manifestInfo": {
+    "manifestInfo": {
+      "packageName": "com.voicejournal.app",
+      "versionCode": "1",
+      "versionName": "1.0.0",
+      "minSdk": "23",
+      "targetSdk": "34",
+      "mainActivity": "com.voicejournal.app.MainActivity"
+    },
+    "issues": []
+  },
+  "contentsInfo": {
+    "contents": {
+      "AndroidManifest.xml": true,
+      "classes.dex": true,
+      "META-INF/MANIFEST.MF": true,
+      "res/": true,
+      "assets/": true,
+      "lib/": true,
+      "resources.arsc": true
+    },
+    "analyzed": true
+  },
+  "issues": [],
+  "summary": {
+    "totalIssues": 0,
+    "highPriorityIssues": 0,
+    "mediumPriorityIssues": 0,
+    "lowPriorityIssues": 0
+  }
+}

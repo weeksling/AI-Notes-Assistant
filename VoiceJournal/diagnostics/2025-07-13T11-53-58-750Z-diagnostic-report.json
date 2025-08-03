@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-07-13T11:53:58.750Z",
+  "appInfo": {
+    "publicKey": "md4zrp4ihllfhn2i5mt426l5km",
+    "privateKey": "private_n4x5mnwfvh3pq2thva6nu2wa5q",
+    "referrerHostnamesRestricted": [],
+    "updated": "2025-07-13T04:19:07.271Z",
+    "email": "matt@mweeksconsulting.com",
+    "platform": "ios",
+    "versionCode": 1,
+    "created": "2025-07-13T04:19:07.271Z",
+    "architectures": [],
+    "appPermissions": {},
+    "createdBy": "matt@mweeksconsulting.com",
+    "publicURL": "https://appetize.io/app/md4zrp4ihllfhn2i5mt426l5km",
+    "appURL": "https://appetize.io/app/md4zrp4ihllfhn2i5mt426l5km",
+    "manageURL": "https://appetize.io/manage/md4zrp4ihllfhn2i5mt426l5km",
+    "appUrl": "https://appetize.io/app/md4zrp4ihllfhn2i5mt426l5km",
+    "debugUrl": "https://appetize.io/app/md4zrp4ihllfhn2i5mt426l5km?enableAdb=true&proxy=intercept",
+    "uploadTime": "2025-07-13T04:19:07.329Z",
+    "apkPath": "releases/VoiceJournal-v1.2-ErrorHandling-UPDATED.apk"
+  },
+  "initialPageInfo": {
+    "title": "Play App",
+    "url": "https://appetize.io/app/md4zrp4ihllfhn2i5mt426l5km",
+    "readyState": "complete",
+    "body": 121629,
+    "elements": {
+      "iframes": 0,
+      "buttons": 30,
+      "forms": 0,
+      "inputs": 10
+    },
+    "console_errors": [],
+    "network_errors": []
+  },
+  "finalPageInfo": {
+    "title": "Play App",
+    "url": "https://appetize.io/app/md4zrp4ihllfhn2i5mt426l5km?device=iphone14pro&osVersion=16.2&toolbar=true",
+    "readyState": "complete",
+    "body": 121752,
+    "elements": {
+      "iframes": 0,
+      "buttons": 30,
+      "forms": 0,
+      "inputs": 10
+    },
+    "console_errors": [],
+    "network_errors": []
+  },
+  "appetizeElements": {
+    "relevant-buttons": {
+      "count": 1,
+      "visible": true,
+      "text": [
+        "Tap to Start"
+      ]
+    }
+  },
+  "sessionStarted": true,
+  "networkLogsCount": 350,
+  "consoleLogsCount": 6,
+  "screenshotsCount": 36,
+  "monitoringDuration": 180256
+}
