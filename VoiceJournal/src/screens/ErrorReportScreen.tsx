@@ -10,6 +10,7 @@ import {
   Share,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NativeErrorModuleInterface, NativeErrorLog } from '../services/NativeErrorModule';
 
 interface ErrorLog {
   id: string;
@@ -26,22 +27,35 @@ interface ErrorReportScreenProps {
 
 export const ErrorReportScreen: React.FC<ErrorReportScreenProps> = ({ navigation }) => {
   const [errors, setErrors] = useState<ErrorLog[]>([]);
+  const [nativeErrors, setNativeErrors] = useState<NativeErrorLog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedError, setSelectedError] = useState<ErrorLog | null>(null);
+  const [selectedError, setSelectedError] = useState<ErrorLog | NativeErrorLog | null>(null);
+  const [selectedErrorType, setSelectedErrorType] = useState<'js' | 'native'>('js');
 
   const ERROR_LOGS_KEY = '@voice_journal_error_logs';
 
   useEffect(() => {
-    loadErrorLogs();
+    loadAllErrorLogs();
   }, []);
 
-  const loadErrorLogs = async () => {
+  const loadAllErrorLogs = async () => {
     try {
       setIsLoading(true);
+      
+      // Load JavaScript errors
       const logsJson = await AsyncStorage.getItem(ERROR_LOGS_KEY);
       if (logsJson) {
         const logs = JSON.parse(logsJson);
         setErrors(logs);
+      }
+      
+      // Load native errors
+      try {
+        const nativeLogs = await NativeErrorModuleInterface.getNativeErrorLogs();
+        setNativeErrors(nativeLogs);
+      } catch (nativeError) {
+        console.error('Failed to load native error logs:', nativeError);
+        // Continue without native logs if there's an error
       }
     } catch (error) {
       console.error('Error loading error logs:', error);
@@ -62,8 +76,18 @@ export const ErrorReportScreen: React.FC<ErrorReportScreenProps> = ({ navigation
           style: 'destructive',
           onPress: async () => {
             try {
+              // Clear JavaScript errors
               await AsyncStorage.removeItem(ERROR_LOGS_KEY);
               setErrors([]);
+              
+              // Clear native errors
+              try {
+                await NativeErrorModuleInterface.clearNativeErrorLogs();
+                setNativeErrors([]);
+              } catch (nativeError) {
+                console.error('Failed to clear native error logs:', nativeError);
+              }
+              
               Alert.alert('Success', 'All error logs have been cleared');
             } catch (error) {
               Alert.alert('Error', 'Failed to clear error logs');
@@ -74,17 +98,18 @@ export const ErrorReportScreen: React.FC<ErrorReportScreenProps> = ({ navigation
     );
   };
 
-  const shareErrorLog = async (error: ErrorLog) => {
+  const shareErrorLog = async (error: ErrorLog | NativeErrorLog) => {
     try {
+      const isNative = 'stackTrace' in error;
       const errorText = `Voice Journal Error Report
 
-Type: ${error.type}
-Time: ${new Date(error.timestamp).toLocaleString()}
+Type: ${isNative ? 'Native' : error.type}
+Time: ${new Date(isNative ? parseInt(error.timestamp) : error.timestamp).toLocaleString()}
 Message: ${error.message}
 
-${error.stack ? `Stack Trace:\n${error.stack}` : ''}
+${isNative ? `Stack Trace:\n${error.stackTrace}` : error.stack ? `Stack Trace:\n${error.stack}` : ''}
 
-${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
+${!isNative && error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
 
       await Share.share({
         message: errorText,
@@ -95,15 +120,20 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
     }
   };
 
-  const renderErrorItem = ({ item }: { item: ErrorLog }) => (
+  const renderErrorItem = ({ item, type }: { item: ErrorLog | NativeErrorLog; type: 'js' | 'native' }) => (
     <TouchableOpacity
-      style={styles.errorItem}
-      onPress={() => setSelectedError(item)}
+      style={[styles.errorItem, type === 'native' && styles.nativeErrorItem]}
+      onPress={() => {
+        setSelectedError(item);
+        setSelectedErrorType(type);
+      }}
     >
       <View style={styles.errorHeader}>
-        <Text style={styles.errorType}>{item.type.toUpperCase()}</Text>
+        <Text style={[styles.errorType, type === 'native' && styles.nativeErrorType]}>
+          {type === 'native' ? 'NATIVE' : item.type.toUpperCase()}
+        </Text>
         <Text style={styles.errorTime}>
-          {new Date(item.timestamp).toLocaleString()}
+          {new Date(type === 'native' ? parseInt(item.timestamp) : item.timestamp).toLocaleString()}
         </Text>
       </View>
       <Text style={styles.errorMessage} numberOfLines={2}>
@@ -115,6 +145,9 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
   const renderErrorDetails = () => {
     if (!selectedError) return null;
 
+    const isNative = selectedErrorType === 'native';
+    const error = selectedError as (isNative ? NativeErrorLog : ErrorLog);
+
     return (
       <View style={styles.modal}>
         <View style={styles.modalContent}>
@@ -123,35 +156,44 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
             
             <View style={styles.detailSection}>
               <Text style={styles.detailLabel}>Type:</Text>
-              <Text style={styles.detailValue}>{selectedError.type}</Text>
+              <Text style={styles.detailValue}>{isNative ? 'Native' : error.type}</Text>
             </View>
 
             <View style={styles.detailSection}>
               <Text style={styles.detailLabel}>Time:</Text>
               <Text style={styles.detailValue}>
-                {new Date(selectedError.timestamp).toLocaleString()}
+                {new Date(isNative ? parseInt(error.timestamp) : error.timestamp).toLocaleString()}
               </Text>
             </View>
 
             <View style={styles.detailSection}>
               <Text style={styles.detailLabel}>Message:</Text>
-              <Text style={styles.detailValue}>{selectedError.message}</Text>
+              <Text style={styles.detailValue}>{error.message}</Text>
             </View>
 
-            {selectedError.stack && (
+            {isNative && error.stackTrace && (
               <View style={styles.detailSection}>
                 <Text style={styles.detailLabel}>Stack Trace:</Text>
                 <ScrollView style={styles.codeBlock}>
-                  <Text style={styles.codeText}>{selectedError.stack}</Text>
+                  <Text style={styles.codeText}>{error.stackTrace}</Text>
                 </ScrollView>
               </View>
             )}
 
-            {selectedError.componentStack && (
+            {!isNative && (error as ErrorLog).stack && (
+              <View style={styles.detailSection}>
+                <Text style={styles.detailLabel}>Stack Trace:</Text>
+                <ScrollView style={styles.codeBlock}>
+                  <Text style={styles.codeText}>{(error as ErrorLog).stack}</Text>
+                </ScrollView>
+              </View>
+            )}
+
+            {!isNative && (error as ErrorLog).componentStack && (
               <View style={styles.detailSection}>
                 <Text style={styles.detailLabel}>Component Stack:</Text>
                 <ScrollView style={styles.codeBlock}>
-                  <Text style={styles.codeText}>{selectedError.componentStack}</Text>
+                  <Text style={styles.codeText}>{(error as ErrorLog).componentStack}</Text>
                 </ScrollView>
               </View>
             )}
@@ -176,6 +218,15 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
     );
   };
 
+  const allErrors = [
+    ...errors.map(error => ({ ...error, _type: 'js' as const })),
+    ...nativeErrors.map(error => ({ ...error, _type: 'native' as const }))
+  ].sort((a, b) => {
+    const timeA = new Date('stackTrace' in a ? parseInt(a.timestamp) : a.timestamp).getTime();
+    const timeB = new Date('stackTrace' in b ? parseInt(b.timestamp) : b.timestamp).getTime();
+    return timeB - timeA; // Most recent first
+  });
+
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
@@ -194,7 +245,7 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
           <Text style={styles.backButtonText}>← Back</Text>
         </TouchableOpacity>
         <Text style={styles.title}>Error Reports</Text>
-        {errors.length > 0 && (
+        {allErrors.length > 0 && (
           <TouchableOpacity
             style={styles.clearButton}
             onPress={clearAllErrors}
@@ -204,7 +255,7 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
         )}
       </View>
 
-      {errors.length === 0 ? (
+      {allErrors.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyIcon}>✅</Text>
           <Text style={styles.emptyTitle}>No Errors Recorded</Text>
@@ -216,14 +267,17 @@ ${error.componentStack ? `Component Stack:\n${error.componentStack}` : ''}`;
         <>
           <View style={styles.summary}>
             <Text style={styles.summaryText}>
-              {errors.length} error{errors.length !== 1 ? 's' : ''} recorded
+              {allErrors.length} error{allErrors.length !== 1 ? 's' : ''} recorded
+              {errors.length > 0 && nativeErrors.length > 0 && (
+                ` (${errors.length} JS, ${nativeErrors.length} Native)`
+              )}
             </Text>
           </View>
 
           <FlatList
-            data={errors}
-            renderItem={renderErrorItem}
-            keyExtractor={(item) => item.id}
+            data={allErrors}
+            renderItem={({ item }) => renderErrorItem({ item, type: item._type })}
+            keyExtractor={(item) => `${item._type}_${'id' in item ? item.id : item.timestamp}`}
             style={styles.errorList}
           />
         </>
@@ -323,6 +377,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: 4,
     borderLeftColor: '#e74c3c',
   },
+  nativeErrorItem: {
+    borderLeftColor: '#f39c12',
+  },
   errorHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -332,6 +389,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: '#e74c3c',
+  },
+  nativeErrorType: {
+    color: '#f39c12',
   },
   errorTime: {
     fontSize: 12,
