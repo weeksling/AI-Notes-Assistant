@@ -1,4 +1,12 @@
 import { registerRootComponent } from 'expo';
+import { ErrorHandler } from './src/services/ErrorHandler';
+
+// Initialize error handling as early as possible
+try {
+  ErrorHandler.getInstance().setupGlobalErrorHandling();
+} catch (error) {
+  console.error('Failed to initialize error handling:', error);
+}
 
 import App from './App';
 

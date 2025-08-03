@@ -23,7 +23,9 @@ class MainApplication : Application(), ReactApplication {
           override fun getPackages(): List<ReactPackage> {
             // Packages that cannot be autolinked yet can be added manually here, for example:
             // packages.add(new MyReactNativePackage());
-            return PackageList(this).packages
+            val packages = PackageList(this).packages.toMutableList()
+            packages.add(CrashReportPackage())
+            return packages
           }
 
           override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
@@ -40,6 +42,14 @@ class MainApplication : Application(), ReactApplication {
 
   override fun onCreate() {
     super.onCreate()
+    
+    // Initialize crash handler
+    try {
+      CrashHandler.getInstance(this)
+    } catch (e: Exception) {
+      android.util.Log.e("VoiceJournal", "Failed to initialize crash handler", e)
+    }
+    
     SoLoader.init(this, false)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
