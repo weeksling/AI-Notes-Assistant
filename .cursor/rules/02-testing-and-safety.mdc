@@ -1,0 +1,7 @@
+## Testing and safety
+
+- When making functional changes, prefer running `cd VoiceJournal && npm run typecheck`.
+- For UI flows, prefer the project test runner scripts where available:
+  - `cd VoiceJournal && npm run test:smoke`
+  - `cd VoiceJournal && npm test`
+- Do not commit or output secrets. Treat `.env*` as sensitive.

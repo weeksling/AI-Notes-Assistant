@@ -1,0 +1,12 @@
+## Project context
+
+- This repo is primarily an Expo React Native app located in `VoiceJournal/`.
+- Treat `VoiceJournal/` as the default working directory for app changes.
+- Generated native projects (`VoiceJournal/android`, `VoiceJournal/ios`) are outputs of `expo prebuild`; avoid manual edits unless explicitly required.
+
+## Commands (source of truth)
+
+- Install: `cd VoiceJournal && npm install`
+- Typecheck: `cd VoiceJournal && npm run typecheck`
+- Tests: `cd VoiceJournal && npm test` (or `npm run test:smoke`)
+- Android build: `cd VoiceJournal && npm run build:android`

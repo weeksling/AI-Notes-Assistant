@@ -1,0 +1,11 @@
+## TypeScript + React Native conventions
+
+- TypeScript is **strict** (`VoiceJournal/tsconfig.json` sets `strict: true`). Keep types sound; avoid `any` unless there is no reasonable alternative.
+- Prefer small, pure components and clear props types.
+- Keep async work cancellable/defensive in UI components (avoid state updates after unmount).
+- Use platform-appropriate APIs (Expo modules first; avoid custom native code unless needed).
+
+## Code style
+
+- Keep naming consistent with existing code in `VoiceJournal/`.
+- Avoid large refactors unless requested; optimize for readability and incremental change.

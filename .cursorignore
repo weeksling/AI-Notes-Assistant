@@ -1,0 +1,37 @@
+**/node_modules/**
+**/.expo/**
+**/web-build/**
+**/dist/**
+**/build/**
+**/.next/**
+**/.turbo/**
+**/.cache/**
+**/coverage/**
+**/.gradle/**
+**/.idea/**
+**/.cxx/**
+**/*.iml
+**/local.properties
+**/*.keystore
+**/*.apk
+
+# Native build outputs (Expo prebuild)
+VoiceJournal/android/**
+!VoiceJournal/android/gradle/**
+!VoiceJournal/android/gradlew
+!VoiceJournal/android/gradlew.bat
+!VoiceJournal/android/settings.gradle
+!VoiceJournal/android/build.gradle
+!VoiceJournal/android/app/build.gradle
+!VoiceJournal/android/app/src/**
+!VoiceJournal/android/gradle.properties
+!VoiceJournal/android/gradle/wrapper/**
+
+VoiceJournal/ios/**
+!VoiceJournal/ios/**/*.xcodeproj/**
+!VoiceJournal/ios/**/*.xcworkspace/**
+!VoiceJournal/ios/**/Info.plist
+!VoiceJournal/ios/**/*.entitlements
+
+# Logs
+**/*.log
