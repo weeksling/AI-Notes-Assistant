@@ -1,5 +1,6 @@
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NativeCrashHandler } from './NativeCrashHandler';
 
 export interface ErrorLog {
   id: string;
@@ -128,14 +129,29 @@ class ErrorHandler {
   // Get all error logs
   async getErrorLogs(): Promise<ErrorLog[]> {
     try {
+      // Get JavaScript error logs
       const logsJson = await AsyncStorage.getItem(this.ERROR_LOGS_KEY);
-      if (!logsJson) return [];
+      const jsLogs = logsJson ? JSON.parse(logsJson) : [];
       
-      const logs = JSON.parse(logsJson);
-      return logs.map((log: any) => ({
-        ...log,
-        timestamp: new Date(log.timestamp),
-      }));
+      // Get native crash logs
+      const nativeCrashLogs = await NativeCrashHandler.getNativeCrashLogs();
+      
+      // Combine and sort by timestamp
+      const allLogs = [
+        ...jsLogs.map((log: any) => ({
+          ...log,
+          timestamp: new Date(log.timestamp),
+        })),
+        ...nativeCrashLogs.map((log: any) => ({
+          ...log,
+          timestamp: new Date(log.timestamp),
+        })),
+      ];
+      
+      // Sort by timestamp (newest first)
+      allLogs.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+      
+      return allLogs;
     } catch (error) {
       console.error('Error getting error logs:', error);
       return [];
@@ -146,6 +162,7 @@ class ErrorHandler {
   async clearErrorLogs(): Promise<void> {
     try {
       await AsyncStorage.removeItem(this.ERROR_LOGS_KEY);
+      await NativeCrashHandler.clearNativeCrashLogs();
     } catch (error) {
       console.error('Error clearing error logs:', error);
     }
@@ -259,3 +276,4 @@ class ErrorHandler {
 }
 
 export default ErrorHandler;
+export { ErrorHandler };
